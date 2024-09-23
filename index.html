@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Michael Lees - Personal Webpage</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <!-- Header and Navigation -->
+        <header>
+            <h1>Michael Lees</h1>
+            <nav>
+                <a href="javascript:void(0)" onclick="showSection('about')"
+                    >About</a
+                >
+                <a href="javascript:void(0)" onclick="showSection('experience')"
+                    >Experience</a
+                >
+                <a href="javascript:void(0)" onclick="showSection('projects')"
+                    >Projects</a
+                >
+                <a href="javascript:void(0)" onclick="showSection('offroad')"
+                    >Offroad</a
+                >
+                <a href="javascript:void(0)" onclick="showSection('contact')"
+                    >Contact</a
+                >
+            </nav>
+        </header>
+
+        <!-- About Section -->
+        <section id="about" class="active">
+            <img src="statics/imgs/resized-profile.png" alt="Michael Lees" />
+            <p>
+                I am an Information Technology student at Kennesaw State
+                University <br />
+                with a passion for software development and offroading. <br />
+            </p>
+            <p>
+                I have experience in software development, data analysis, and
+                inventory management. <br />
+                I am currently the Software Team Lead for the KSU Autonomous
+                Underwater Vehicle Team. <br />
+            </p>
+            <button onclick="https://ksuauv.com">KSU AUV Website</button>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="hidden">
+            <h2 class="section-title">Experience</h2>
+            <ul>
+                <li>
+                    <strong>Software Team Lead</strong> - KSU Autonomous
+                    Underwater Vehicle Team <em>(Present)</em>
+                </li>
+                <p>
+                    Leading a diverse team to develop software for AUVs,
+                    including creating models for PID control, classification,
+                    and reinforcement learning.
+                </p>
+
+                <li>
+                    <strong>Technics Intern</strong> - Doehler North America
+                    <em>(August 2020)</em>
+                </li>
+                <p>
+                    Managed inventory accuracy using custom software,
+                    collaborated across departments to optimize inventory
+                    management, and generated reports for restocking processes.
+                </p>
+            </ul>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="hidden">
+            <h2 class="section-title">Projects</h2>
+            <p>Check out my GitHub for all my projects:</p>
+            <div class="center-button">
+                <a
+                    class="button-style"
+                    href="https://github.com/msle237-lees"
+                    target="_blank"
+                >
+                    GitHub Profile
+                </a>
+            </div>
+        </section>
+
+        <!-- Offroad Section -->
+        <section id="offroad" class="hidden">
+            <h2 class="section-title">Offroad</h2>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="hidden">
+            <h2 class="section-title">Contact</h2>
+            <form id="contact-form" onsubmit="submitForm(event)">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required />
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required />
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required />
+
+                <label for="reason">Reason for Contact:</label>
+                <textarea id="reason" name="reason" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+            <p>
+                Email:
+                <a href="mailto:msle237.lees@gmail.com" style="color: #1e90ff">
+                    msle237.lees@gmail.com
+                </a>
+            </p>
+            <p>
+                LinkedIn:
+                <a
+                    href="https://www.linkedin.com/in/michael-lees1"
+                    target="_blank"
+                    style="color: #1e90ff"
+                >
+                    Michael Lees LinkedIn
+                </a>
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 Michael Lees</p>
+        </footer>
+
+        <!-- JavaScript for section navigation -->
+        <script src="js/index.js"></script>
+    </body>
+</html>
