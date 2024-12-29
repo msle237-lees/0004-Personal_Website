@@ -1,49 +1,51 @@
-function showSection(sectionId) {
-    const sections = document.querySelectorAll("section");
-    sections.forEach((section) => {
-      section.classList.add("hidden");
-    });
-  
-    document.getElementById(sectionId).classList.remove("hidden");
-  }
-  
-  async function submitForm(event) {
-    event.preventDefault(); // Prevent the default form submission behavior
-  
-    // Get form data
-    const formData = {
-      name: document.getElementById("name").value,
-      phone: document.getElementById("phone").value,
-      email: document.getElementById("email").value,
-      subject: document.getElementById("subject").value,
-      reason: document.getElementById("reason").value,
-      browser: navigator.userAgent, // Capture browser info
-      machineId: window.navigator.platform, // Capture platform/machine info
-    };
-  
-    // Prepare the data string to send via curl format
-    const dataString = `Name: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nSubject: ${formData.subject}\nReason: ${formData.reason}\nBrowser: ${formData.browser}\nMachine ID: ${formData.machineId}`;
-  
-    try {
-      // Send data using fetch (emulating a curl request)
-      const response = await fetch(
-        "http://ntfy.404engineering.online/AcCDReSwUIuHg38J",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "text/plain",
-          },
-          body: dataString,
-        },
-      );
-  
-      if (response.ok) {
-        alert("Form submitted successfully!");
-      } else {
-        alert("Form submitted successfully!");
-      }
-    } catch (error) {
-      console.error("Error:", error); // Log the actual error for debugging
+// geting canvas by Boujjou Achraf
+var c = document.getElementById("c");
+var ctx = c.getContext("2d");
+
+//making the canvas full screen
+c.height = window.innerHeight;
+c.width = window.innerWidth;
+
+//chinese characters - taken from the unicode charset
+var matrix = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+//converting the string into an array of single characters
+matrix = matrix.split("");
+
+var font_size = 10;
+var columns = c.width/font_size; //number of columns for the rain
+//an array of drops - one per column
+var drops = [];
+//x below is the x coordinate
+//1 = y co-ordinate of the drop(same for every drop initially)
+for(var x = 0; x < columns; x++)
+    drops[x] = 1; 
+
+//drawing the characters
+function draw()
+{
+    //Black BG for the canvas
+    //translucent BG to show trail
+    ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+    ctx.fillRect(0, 0, c.width, c.height);
+
+    ctx.fillStyle = "#f4427d";//green text
+    ctx.font = font_size + "px arial";
+    //looping over drops
+    for(var i = 0; i < drops.length; i++)
+    {
+        //a random chinese character to print
+        var text = matrix[Math.floor(Math.random()*matrix.length)];
+        //x = i*font_size, y = value of drops[i]*font_size
+        ctx.fillText(text, i*font_size, drops[i]*font_size);
+
+        //sending the drop back to the top randomly after it has crossed the screen
+        //adding a randomness to the reset to make the drops scattered on the Y axis
+        if(drops[i]*font_size > c.height && Math.random() > 0.975)
+            drops[i] = 0;
+
+        //incrementing Y coordinate
+        drops[i]++;
     }
-  }
-  
+}
+
+setInterval(draw, 35);
